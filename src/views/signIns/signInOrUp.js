@@ -4,7 +4,7 @@
 
 import React, { Component } from 'react';
 import {
-    // Platform,
+    Image,
     StyleSheet,
     View,
     Text,
@@ -18,10 +18,21 @@ export default class SignInOrUpScreen extends Component {
     render() {
         return (
             <View style={[global.styles.screen]}>
-                <Text style={[global.styles.text]}>
-                    this is SignInOrUpScreen.
-                </Text>
+                {/* logo */}
+                <View>
+                    <Text style={[styles.logoName]}>
+                        穴位敏化诊疗系统
+                    </Text>
+                </View>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create ({
+    logoName: {
+        color: '#0d6eff',
+        fontSize: 30,
+        fontWeight: 'bold',
+    },
+});
