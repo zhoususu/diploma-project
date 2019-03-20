@@ -28,6 +28,7 @@ import MineTabScreen from './views/mine'; //我的
 import SignInOrUpScreen from './views/signIns/signInOrUp'; //免注册登录
 import SignInScreen from './views/signIns/signIn'; //登录
 import TopShowScreen from './views/home/topShow'; //登录
+import ForgetScreen from './views/signIns/forget';
 
 // const instructions = Platform.select({
 //   ios: 'Press Cmd+R to reload,\n' +
@@ -109,14 +110,15 @@ export default class App extends Component {
                             key="tabs"
                             component={Tabs}
                             title="首页"
-                            // initial={true}
+                            initial={true}
                             hideNavBar={true} //此处以及其他页都隐藏了导航，我打算自定义组件作为头部导航栏。
                         />
                         {/*播放*/}
                         {/*<Scene key="play" component={PlayScreen} title="正在播放" hideNavBar={true} />*/}
                         {/*登录*/}
-                        <Scene key="signInOrUp" component={SignInOrUpScreen} title="免注册登录" hideNavBar={true} initial={true} />
-                        <Scene key="signIn" component={SignInScreen} title="登录" hideNavBar={true}  />
+                        <Scene key="signInOrUp" component={SignInOrUpScreen} title="免注册登录" hideNavBar={true} />
+                        <Scene key="signIn" component={SignInScreen} title="登录" hideNavBar={true} />
+                        <Scene key="forget" component={ForgetScreen} title="忘记密码" hideNavBar={true} />
                         {/*内容页*/}
                         <Scene key="topShow" component={TopShowScreen} title="内容页" hideNavBar={true} />
                     </Scene>

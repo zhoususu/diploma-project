@@ -10,7 +10,7 @@ import {
     Text,
     Image,
 } from 'react-native';
-
+var Dimensions = require('Dimensions');
 export default class MineTabScreen extends Component {
     constructor(props){
         super(props);
@@ -19,7 +19,7 @@ export default class MineTabScreen extends Component {
     render() {
         return (
             <View style={[global.styles.screen]}>
-                <View style={[styles.backView]}/>
+                <Image source={require('../resources/images/src/titlebg.png')} style={[styles.backView]}/>
                 <View style={[styles.title]}>
                     <Image source={require('../resources/images/src/miss.jpg')} style={[styles.imageStyle]} />
                 </View>
@@ -66,9 +66,9 @@ const styles = StyleSheet.create ({
         paddingRight: 15,
     },
     backView: {
-        backgroundColor: '#0d6eff',
-        width: '100%',
+        width: Dimensions.get('window').width,
         height: '30%',
+        resizeMode:'stretch'
     },
     title: {
         width: '25%',

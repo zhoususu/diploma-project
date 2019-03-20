@@ -27,10 +27,20 @@ export default class HomeTabScreen extends Component {
     render() {
         return (
             <View style={[global.styles.screen]}>
-                <Text style={[global.styles.text]}>
-                    this is HomeTabScreen.
-                </Text>
-                <View style={[{marginTop: 10}]}>
+                {/* 标题 */}
+                <View style={[styles.backView]}>
+                    <Text style={[styles.headText]}>处方笺</Text>
+                </View>
+                {/* 第一行 */}
+                <View style={[styles.box]}>
+                    <Text style={[styles.left]}>处方笺</Text>
+                    <Text style={[styles.right]}>处方笺</Text>
+                </View>
+                {/* 第二行 */}
+                {/* 第三行 */}
+                {/* 第四行 */}
+                {/* 第五行 */}
+                {/* <View style={[{marginTop: 10}]}>
                     <Button onPress={Actions.signInOrUp} title="免注册登录" />
                 </View>
                 <View style={[{marginTop: 10}]}>
@@ -41,8 +51,22 @@ export default class HomeTabScreen extends Component {
                 </View>
                 <View style={[{marginTop: 10}]}>
                     <Button onPress={Actions.topShow} title="内容页" />
-                </View>
+                </View> */}
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create ({
+    backView: {
+        justifyContent: 'center',
+        backgroundColor: '#0d6eff',
+        width: '100%',
+        height: '8%',
+    },
+    headText: {
+        color: '#ffffff',
+        textAlign: 'center',
+        fontSize: 20,
+    },
+});

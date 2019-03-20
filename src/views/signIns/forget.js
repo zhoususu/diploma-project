@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-export default class SignInOrUpScreen extends Component {
+export default class ForgetScreen extends Component {
     constructor(props){
         super(props);
     }
@@ -30,14 +30,14 @@ export default class SignInOrUpScreen extends Component {
                 {/* 用户名 */}
                 <View style={[styles.userBox]}>
                     <Image style={[styles.icon]} source={require('../../resources/images/src/yonghu.png')} />
-                    <TextInput placeholder ="请输入手机号码" placeholderTextColor="#a1a4bc"
+                    <TextInput placeholder ="请输入绑定手机号码" placeholderTextColor="#a1a4bc"
                         style={[styles.userStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
                         clearTextOnFocus={true} />
                 </View>
                 {/* 密码 */}
                 <View style={[styles.userBox]}>
-                    <Image style={[styles.icon]} source={require('../../resources/images/src/mima.png')} />
-                    <TextInput password={false} placeholder ="请输入密码" placeholderTextColor="#a1a4bc" 
+                    <Image style={[styles.icon]} source={require('../../resources/images/src/50.png')} />
+                    <TextInput password={false} placeholder ="请输入身份证号" placeholderTextColor="#a1a4bc" 
                         style={[styles.userStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
                         clearTextOnFocus={true} />
                 </View>
@@ -47,8 +47,8 @@ export default class SignInOrUpScreen extends Component {
                 </View>
                 {/* 连接 */}
                 <View style={[styles.textStyle]}>
-                    <Text style={[styles.text1]} onPress={Actions.signInOrUp}>注册新用户</Text>
-                    <Text style={[styles.text2]} onPress={Actions.forget}>忘记密码？</Text>
+                    <Text>已有账号？</Text>
+                    <Text style={[styles.text1]} onPress={Actions.signIn}>返回登录</Text>
                 </View>
             </View>
         )
@@ -98,7 +98,7 @@ const styles = StyleSheet.create ({
         borderRadius: 20,
         marginTop: 30,
         backgroundColor: '#0d6eff',
-        marginBottom: '15%',
+        marginBottom: '25%',
     },
     btnText: {
         color: '#ffffff',
@@ -107,14 +107,9 @@ const styles = StyleSheet.create ({
     },
     textStyle: {
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
+        justifyContent: 'center',
     },
     text1: {
-        width: '40%',
-        textAlign: 'left',
-    },
-    text2: {
-        width: '40%',
-        textAlign: 'right',
+        color: '#0d6eff',
     }
 });
