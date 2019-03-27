@@ -37,7 +37,7 @@ export default class ForgetScreen extends Component {
                 {/* 密码 */}
                 <View style={[styles.userBox]}>
                     <Image style={[styles.icon]} source={require('../../resources/images/src/50.png')} />
-                    <TextInput password={false} placeholder ="请输入身份证号" placeholderTextColor="#a1a4bc" 
+                    <TextInput placeholder ="请输入身份证号" placeholderTextColor="#a1a4bc" 
                         style={[styles.userStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
                         clearTextOnFocus={true} />
                 </View>

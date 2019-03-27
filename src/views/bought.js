@@ -74,6 +74,8 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width,
         padding: 10,
         flexDirection: 'row',
+        // borderBottomWidth: 1,
+        // borderBottomColor: '#f1f1f1',
     },
     box1: {
         flexDirection: 'row',

@@ -37,13 +37,13 @@ export default class SignInOrUpScreen extends Component {
                 {/* 密码 */}
                 <View style={[styles.userBox]}>
                     <Image style={[styles.icon]} source={require('../../resources/images/src/mima.png')} />
-                    <TextInput password={false} placeholder ="请输入密码" placeholderTextColor="#a1a4bc" 
+                    <TextInput secureTextEntry={true} placeholder ="请输入密码" placeholderTextColor="#a1a4bc" 
                         style={[styles.userStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
                         clearTextOnFocus={true} />
                 </View>
                 <View style={[styles.userBox]}>
                     <Image style={[styles.icon]} source={require('../../resources/images/src/mima.png')} />
-                    <TextInput password={false} placeholder ="请确认密码" placeholderTextColor="#a1a4bc" 
+                    <TextInput secureTextEntry={true} placeholder ="请确认密码" placeholderTextColor="#a1a4bc" 
                         style={[styles.userStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
                         clearTextOnFocus={true} />
                 </View>

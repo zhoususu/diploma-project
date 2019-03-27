@@ -26,17 +26,17 @@ export default class HeadsetTabScreen extends Component {
                 {/* 列表 */}
                 <FlatList
                     data={[
-                        {key: '仲曜瑞',image: require('../resources/images/src/man.png'),time: '2019-03-14 08:00',sign: '类风湿性关节炎'},
-                        {key: '刘巧兰',image: require('../resources/images/src/man.png'),time: '2019-03-14 08:10',sign: '月经不调'},
-                        {key: '王绍辉',image: require('../resources/images/src/man.png'),time: '2019-03-14 08:20',sign: '发烧、流感'},
-                        {key: '刘天蓉',image: require('../resources/images/src/man.png'),time: '2019-03-14 09:07',sign: '慢性结肠炎'},
-                        {key: '徐翰林',image: require('../resources/images/src/man.png'),time: '2019-03-14 09:58',sign: '急性肠胃炎'},
-                        {key: '慕易',image: require('../resources/images/src/man.png'),time: '2019-03-14 10:10',sign: '腰椎间盘突出'},
-                        {key: '张梓林',image: require('../resources/images/src/man.png'),time: '2019-03-14 12:05',sign: '面部神经麻痹'},
-                        {key: '王若琴',image: require('../resources/images/src/man.png'),time: '2019-03-13 09:00',sign: '中风偏瘫'},
-                        {key: '赵磊磊',image: require('../resources/images/src/man.png'),time: '2019-03-13 09:21',sign: '类风湿性关节炎'},
-                        {key: '欧阳聆妍',image: require('../resources/images/src/man.png'),time: '2019-03-13 10:00',sign: '脑震荡后遗症'},
-                        {key: '刘轩',image: require('../resources/images/src/man.png'),time: '2019-03-13 10:19',sign: '三叉神经痛'},
+                        {key: '仲曜瑞',image: require('../resources/images/src/man.png'),btn: '治疗',sign: '类风湿性关节炎'},
+                        {key: '刘巧兰',image: require('../resources/images/src/man.png'),btn: '治疗',sign: '月经不调'},
+                        {key: '王绍辉',image: require('../resources/images/src/man.png'),btn: '治疗',sign: '发烧、流感'},
+                        {key: '刘天蓉',image: require('../resources/images/src/man.png'),btn: '治疗',sign: '慢性结肠炎'},
+                        {key: '徐翰林',image: require('../resources/images/src/man.png'),btn: '治疗',sign: '急性肠胃炎'},
+                        {key: '慕易',image: require('../resources/images/src/man.png'),btn: '治疗',sign: '腰椎间盘突出'},
+                        {key: '张梓林',image: require('../resources/images/src/man.png'),btn: '治疗',sign: '面部神经麻痹'},
+                        {key: '王若琴',image: require('../resources/images/src/man.png'),btn: '治疗',sign: '中风偏瘫'},
+                        {key: '赵磊磊',image: require('../resources/images/src/man.png'),btn: '治疗',sign: '类风湿性关节炎'},
+                        {key: '欧阳聆妍',image: require('../resources/images/src/man.png'),btn: '治疗',sign: '脑震荡后遗症'},
+                        {key: '刘轩',image: require('../resources/images/src/man.png'),btn: '治疗',sign: '三叉神经痛'},
                         // {key: 'Joel'},
                         // {key: 'John'},
                         // {key: 'Jillian'},
@@ -49,7 +49,9 @@ export default class HeadsetTabScreen extends Component {
                             <View>
                                 <View style={styles.box1}>
                                     <Text style={styles.name}>{item.key}</Text>
-                                    <Text style={styles.time}>{item.time}</Text>
+                                    <View style={styles.time}>
+                                        <Text style={styles.btn}>{item.btn}</Text>
+                                    </View>
                                 </View>
                                 <Text style={styles.symbol}>{item.sign}</Text>
                             </View>
@@ -66,6 +68,8 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width,
         padding: 10,
         flexDirection: 'row',
+        // borderBottomWidth: 1,
+        // borderBottomColor: '#f1f1f1',
     },
     box1: {
         flexDirection: 'row',
@@ -77,17 +81,23 @@ const styles = StyleSheet.create({
         height: 40,
     },
     name: {
-        width: '40%',
+        width: '75%',
         color: '#3e334d',
         fontSize: 16,
         textAlign: 'left',
         fontWeight: 'bold',
     },
     time: {
-        width: '52%',
-        color: '#a1a4bc',
-        fontSize:10,
-        textAlign: 'right',
+        width: '15%',
+    },
+    btn: {
+        // width: '25%',
+        padding:2,
+        borderRadius:5,
+        color: '#ffffff',
+        backgroundColor: '#0d6eff',
+        fontSize:12,
+        textAlign: 'center',
     },
     symbol: {
         color: '#a1a4bc',
