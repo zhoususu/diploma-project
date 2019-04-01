@@ -7,10 +7,12 @@ import {
     FlatList,
     TextInput,
     StyleSheet,
+    TouchableOpacity,
     View,
     Image,
     Text,
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 var Dimensions = require('Dimensions');
 export default class BoughtTabScreen extends Component {
     constructor(props){
@@ -52,16 +54,18 @@ export default class BoughtTabScreen extends Component {
                         // {key: 'Julie'},
                     ]}
                     renderItem={({item}) => 
-                        <View style={styles.box}>
-                            <Image source={item.image} style={[styles.image]}/>
-                            <View>
-                                <View style={styles.box1}>
-                                    <Text style={styles.name}>{item.key}</Text>
-                                    <Text style={styles.time}>{item.time}</Text>
+                        <TouchableOpacity onPress={Actions.topShow}>
+                            <View style={styles.box}>
+                                <Image source={item.image} style={[styles.image]}/>
+                                <View>
+                                    <View style={styles.box1}>
+                                        <Text style={styles.name}>{item.key}</Text>
+                                        <Text style={styles.time}>{item.time}</Text>
+                                    </View>
+                                    <Text style={styles.symbol}>{item.sign}</Text>
                                 </View>
-                                <Text style={styles.symbol}>{item.sign}</Text>
                             </View>
-                        </View>
+                        </TouchableOpacity>
                     }
                 />
             </View>
@@ -74,8 +78,8 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width,
         padding: 10,
         flexDirection: 'row',
-        // borderBottomWidth: 1,
-        // borderBottomColor: '#f1f1f1',
+        borderBottomWidth: 1,
+        borderBottomColor: '#f1f1f1',
     },
     box1: {
         flexDirection: 'row',

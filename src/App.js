@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react';
 import {
-    // Platform,
+    AppState,
     StyleSheet,
     BackHandler,
     View,
@@ -17,7 +17,6 @@ import ScrollableTabView from 'react-native-scrollable-tab-view';
 import Toast from 'react-native-easy-toast';
 //自定义组件
 import CustomTabBar from './components/customTabBar'; //自定义选项卡
-import PlayButton from "./components/playButton";
 import Loading from './components/loading';
 //选项卡Tab页
 import HomeTabScreen from './views/home'; //首页
@@ -28,6 +27,7 @@ import MineTabScreen from './views/mine'; //我的
 import SignInOrUpScreen from './views/signIns/signInOrUp'; //免注册登录
 import SignInScreen from './views/signIns/signIn'; //登录
 import TopShowScreen from './views/home/topShow'; //登录
+import WorkScreen from './views/home/work'; //登录
 import ForgetScreen from './views/signIns/forget';
 
 // const instructions = Platform.select({
@@ -81,8 +81,14 @@ export default class App extends Component {
     constructor(props) {
         super(props);
     }
+    state = {
+        appState: AppState.currentState,
+        previousAppstates: []
+    }
 
     componentDidMount() {
+        AppState.addEventListener('change',this._handleAppAtateChange);
+
         self = this;
         global.showLoading = function() {
             self.Loading.show();
@@ -94,6 +100,19 @@ export default class App extends Component {
             self.refs.toast.show(message);
         };
     }
+
+    componentWillUnmount() {
+        AppState.addEventListener('change',this._handleAppAtateChange);
+    }
+
+    _handleAppAtateChange = (appState) => {
+        var previousAppstates =this
+        .state
+        .previousAppstates
+        .slice();
+        previousAppstates.push(this.state.appState);
+        this.setState({appState,previousAppstates});        
+    };
 
     render() {
         return (
@@ -121,6 +140,7 @@ export default class App extends Component {
                         <Scene key="forget" component={ForgetScreen} title="忘记密码" hideNavBar={true} />
                         {/*内容页*/}
                         <Scene key="topShow" component={TopShowScreen} title="内容页" hideNavBar={true} />
+                        <Scene key="Work" component={WorkScreen} title="内容页" hideNavBar={true} />
                     </Scene>
                 </Router>
                 <Toast ref="toast" opacity={0.8}/>

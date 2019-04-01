@@ -7,14 +7,22 @@ import {
     Image,
     TextInput,
     StyleSheet,
+    TouchableOpacity,
     View,
     Text,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import tabs from '../../App'; 
+import NetUitl from '../../components/NetUitl';
+// import console = require('console');
 
 export default class SignInOrUpScreen extends Component {
     constructor(props){
         super(props);
+        this.state = {
+            username: '',
+            password: '',
+        }
     }
 
     render() {
@@ -32,19 +40,26 @@ export default class SignInOrUpScreen extends Component {
                     <Image style={[styles.icon]} source={require('../../resources/images/src/yonghu.png')} />
                     <TextInput placeholder ="请输入手机号码" placeholderTextColor="#a1a4bc"
                         style={[styles.userStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} />
+                        clearTextOnFocus={true} onChangeText={(text) => {this.username = text}} />
                 </View>
                 {/* 密码 */}
                 <View style={[styles.userBox]}>
                     <Image style={[styles.icon]} source={require('../../resources/images/src/mima.png')} />
                     <TextInput secureTextEntry={true} placeholder ="请输入密码" placeholderTextColor="#a1a4bc" 
                         style={[styles.userStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} />
+                        clearTextOnFocus={true} onChangeText={(text) => {this.password = text}} />
                 </View>
                 {/* 按钮 */}
-                <View style={[styles.btnStyle]}>
-                    <Text style={[styles.btnText]} onPress={Actions.tabs}>登录</Text>
-                </View>
+                <TouchableOpacity onPressCallback={this.onPressCallback} style={[styles.btnStyle]}
+                    disabled={
+                        this.state.errorEmail === '' &&
+                        this.state.errorPass === ''
+                            ? false
+                            : true
+                    }>
+                {/* onPress={Actions.tabs} */}
+                    <Text style={[styles.btnText]} >登录</Text>
+                </TouchableOpacity>
                 {/* 连接 */}
                 <View style={[styles.textStyle]}>
                     <Text style={[styles.text1]} onPress={Actions.signInOrUp}>注册新用户</Text>
@@ -53,10 +68,29 @@ export default class SignInOrUpScreen extends Component {
             </View>
         )
     }
+
+    onPressCallback = () => {
+        let formData = new FormData();
+        formData.append("loginName",this.userName);
+        formData.append("pwd",this.password);
+        let url = "http://localhost:8080/loginApp";
+        NetUitl.postJson(url,formData,(responseText) => {
+            alert(responseText);
+            this.onLoginSuccess();
+        })
+    }
+    
+    onLoginSuccess() {
+        const { navigator } = this.props;
+        if (navigator) {
+         navigator.push({
+            key: "tabs",
+            component:{tabs}
+         });
+        }
+    }
 }
 
-const onButtonPress = () => {
-  };
 
 const styles = StyleSheet.create ({
     logoName: {

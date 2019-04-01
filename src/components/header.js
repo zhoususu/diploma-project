@@ -53,7 +53,7 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
     header: {
-        backgroundColor: '#ffffff',
+        backgroundColor: '#0d6eff',
         width: Common.autoScaleSize(750),
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#cdcdcd',
     },
     title: {
-        color: '#2c2c2c',
+        color: '#ffffff',
         height: Common.autoScaleSize(42),
         lineHeight: Common.autoScaleSize(42),
         fontSize: Common.autoFontSize(38),
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
         height: Common.autoScaleSize(36),
     },
     headerReturnText: {
-        color: '#2c2c2c',
+        color: '#ffffff',
         height: Common.autoScaleSize(36),
         lineHeight: Common.autoScaleSize(36),
         fontSize: Common.autoFontSize(32),
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
         height: Common.autoScaleSize(36),
     },
     headerDoneText: {
-        color: '#2c2c2c',
+        color: '#ffffff',
         height: Common.autoScaleSize(36),
         lineHeight: Common.autoScaleSize(36),
         fontSize: Common.autoFontSize(32),

@@ -5,6 +5,8 @@
 import React, { Component } from 'react';
 import {
     StyleSheet,
+    FlatList,
+    ScrollView,
     View,
     Text,
     Image,
@@ -16,6 +18,7 @@ var Dimensions = require('Dimensions');
 export default class HomeTabScreen extends Component {
     constructor(props){
         super(props);
+        this.state={};
     }
 
     _showLoading() {
@@ -32,55 +35,33 @@ export default class HomeTabScreen extends Component {
                 <View style={[styles.backView]}>
                     <Text style={[styles.headText]}>处方笺</Text>
                 </View>
-                {/* 第一行 */}
-                <View style={[styles.box]}>
-                    <View style={[styles.left]}>
-                        <Text style={[styles.title]}>处方编号:</Text>
-                        <Text style={[styles.write]}>0123456789</Text>
-                    </View>
-                    <View style={[styles.right]}>
-                        <Text style={[styles.title]}>姓名：</Text>
+                <ScrollView>
+                    <View style={styles.box}>
+                        <Text style={[styles.title]}>就诊日期</Text>
                         <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true}/>
+                        clearTextOnFocus={true} multiline={false}/>
                     </View>
-                </View>
-                {/* 第二行 */}
-                <View style={[styles.box]}>
-                    <View style={[styles.left]}>
-                        <Text style={[styles.title]}>性别:</Text>
-                        <Text style={[styles.write]}>男女</Text>
-                    </View>
-                    <View style={[styles.right]}>
-                        <Text style={[styles.title]}>年龄：</Text>
+                    <View style={styles.box}>
+                        <Text style={[styles.title]}>姓名</Text>
                         <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true}/>
+                        clearTextOnFocus={true} multiline={false}/>
                     </View>
-                </View>
-                {/* 第三行 */}
-                <View style={[styles.box]}>
-                    <View style={[styles.left]}>
-                        <Text style={[styles.title]}>联系方式:</Text>
+                    <View style={styles.box}>
+                        <Text style={[styles.title]}>性别</Text>
                         <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true}/>
+                        clearTextOnFocus={true} multiline={false}/>
                     </View>
-                    <View style={[styles.right]}>
-                        <Text style={[styles.title]}>日期：</Text>
+                    <View style={styles.box}>
+                        <Text style={[styles.title]}>联系电话</Text>
                         <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true}/>
+                        clearTextOnFocus={true} multiline={false}/>
                     </View>
-                </View>
-                {/* 第四行 */}
-                <View style={[styles.box]}>
-                    <View style={[styles.left1]}>
-                        <Text style={[styles.title]}>临床诊断：</Text>
-                        <TextInput style={[styles.write1]}  clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={true} />
+                    <View style={styles.box}>
+                        <Text style={[styles.title]}>诊断结果</Text>
+                        <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
+                        clearTextOnFocus={true} multiline={true}/>
                     </View>
-                </View>
-                {/* 分界 */}
-                <View style={[styles.fenge]}>
-                    <Text style={[styles.sign]}>R</Text>
-                </View>
+                </ScrollView>
                 {/* 搜索 */}
                 <View style={[styles.searchBox]}>
                     <Image style={[styles.icon]} source={require('../resources/images/src/sousuo.png')}/>
@@ -88,26 +69,6 @@ export default class HomeTabScreen extends Component {
                         style={[styles.searchStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
                         clearTextOnFocus={true} 
                     />
-                </View>
-                {/* 穴位 */}
-                {/* 注意 */}
-                <View style={[styles.box]}>
-                    <View style={[styles.left1]}>
-                        <Text style={[styles.title]}>注意：</Text>
-                        <TextInput style={[styles.write2]}  clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={true} />
-                    </View>
-                </View>
-                {/* 医师 */}
-                <View style={[styles.box]}>
-                    <View style={[styles.left]}>
-                        <Text style={[styles.title]}>医师：</Text>
-                        <TextInput style={[styles.write3]}  clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={true} />
-                    </View>
-                    <View style={[styles.btn]}>
-                        <Text style={{color:'#ffffff',fontSize: 13,}}>确定提交</Text>
-                    </View>
                 </View>
                 {/* <View style={[{marginTop: 10}]}>
                     <Button onPress={Actions.signInOrUp} title="免注册登录" />
@@ -138,64 +99,6 @@ const styles = StyleSheet.create ({
         textAlign: 'center',
         fontSize: 20,
     },
-    box: {
-        flexDirection: 'row',
-        width: Dimensions.get('window').width,
-        paddingTop: 10,
-        paddingLeft:7,
-        justifyContent: 'space-between',
-    },
-    left: {
-        flexDirection: 'row',
-        width: Dimensions.get('window').width/2,
-        alignItems: 'center',
-    },
-    left1: {
-        flexDirection: 'row',
-        width: Dimensions.get('window').width*0.95,
-        alignItems: 'flex-start',
-    },
-    right: {
-        flexDirection: 'row',
-        width: Dimensions.get('window').width/2,
-        paddingLeft: 15,
-        alignItems: 'center',
-    },
-    title: {
-        color: '#3e334d',
-        fontSize: 14,
-    },
-    write: {
-        borderBottomWidth: 1,
-        width: '65%',
-        padding: 0,
-        fontSize: 14,
-        height:25,
-    },
-    write1: {
-        borderBottomWidth: 1,
-        lineHeight: 20,
-        width: '80%',
-        padding: 0,
-        height:25,
-        fontSize: 14,
-    },
-    write2: {
-        borderBottomWidth: 1,
-        lineHeight: 20,
-        width: '88%',
-        padding: 0,
-        height:25,
-        fontSize: 14,
-    },
-    write3: {
-        borderBottomWidth: 1,
-        lineHeight: 20,
-        width: '85%',
-        padding: 0,
-        height:25,
-        fontSize: 14,
-    },
     searchBox: {
         backgroundColor: '#f7f7f7',
         width: Dimensions.get('window').width*0.8,
@@ -216,23 +119,21 @@ const styles = StyleSheet.create ({
         marginLeft: 20,
         marginRight: 10,
     },
-    fenge: {
-        paddingTop: '2%',
-        paddingLeft: 10,
+    box: {
         width: Dimensions.get('window').width,
-        borderBottomWidth: 2,
-        borderBottomColor: '#f7f7f7',
+        padding: 10,
+        flexDirection: 'row',
+        borderBottomWidth: 1,
+        borderBottomColor: '#f1f1f1',
     },
-    sign: {
-        fontWeight: 'bold',
-        fontSize: 20,
+    title: {
+        color: '#3e334d',
+        fontSize: 14,
+        width: Dimensions.get('window').width*0.25,
     },
-    btn: {
-        backgroundColor: '#0d6eff',
-        borderRadius:50,
-        width:Dimensions.get('window').width*0.3,
-        justifyContent: 'center',
-        alignItems:'center',
-        marginRight: '2%',
-    }
+    write: {
+        padding: 0,
+        fontSize: 14,
+        width: Dimensions.get('window').width*0.7,
+    },
 });
