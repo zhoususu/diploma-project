@@ -28,6 +28,7 @@ import SignInOrUpScreen from './views/signIns/signInOrUp'; //免注册登录
 import SignInScreen from './views/signIns/signIn'; //登录
 import TopShowScreen from './views/home/topShow'; //登录
 import WorkScreen from './views/home/work'; //登录
+import collectScreen from './views/home/collect'; //登录
 import ForgetScreen from './views/signIns/forget';
 
 // const instructions = Platform.select({
@@ -140,7 +141,8 @@ export default class App extends Component {
                         <Scene key="forget" component={ForgetScreen} title="忘记密码" hideNavBar={true} />
                         {/*内容页*/}
                         <Scene key="topShow" component={TopShowScreen} title="内容页" hideNavBar={true} />
-                        <Scene key="Work" component={WorkScreen} title="内容页" hideNavBar={true} />
+                        <Scene key="Work" component={WorkScreen} title="内容页1" hideNavBar={true} />
+                        <Scene key="collect" component={collectScreen} title="内容页1" hideNavBar={true} />
                     </Scene>
                 </Router>
                 <Toast ref="toast" opacity={0.8}/>

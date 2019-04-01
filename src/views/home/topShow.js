@@ -23,7 +23,7 @@ export default class TopShowScreen extends Component {
     render() {
         return (
             <View style={[global.styles.screen]}>
-                <Header title={'title'} doneText={"完成"} style={[styles.header]} />
+                <Header title={'病历详情'} doneText={"完成"} style={[styles.header]} />
                 <ScrollView>
                     <View style={[styles.box]}>
                         <Text style={[styles.title]}>姓名</Text>

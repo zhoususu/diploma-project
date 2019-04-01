@@ -18,7 +18,7 @@ var Dimensions = require('Dimensions');
 import Common from '../../components/common'; //公共类
 import Header from '../../components/header'; //头部导航
 
-export default class WorkScreen extends Component {
+export default class collectScreen extends Component {
     constructor(props){
         super(props);
     }
@@ -26,7 +26,7 @@ export default class WorkScreen extends Component {
     render() {
         return (
             <View style={[global.styles.screen]}>
-                <Header title={"治疗设置"} style={[styles.header]} />
+                <Header title={"数据收集"} style={[styles.header]} />
                 <ScrollView contentContainerStyle = {{flex:1}}>
                     <View style={[styles.box]}>
                         <Text style={[styles.title]}>姓名</Text>
@@ -100,8 +100,8 @@ export default class WorkScreen extends Component {
                         </View>
                     </View>
                     <View style={[styles.size]}>
-                        <TouchableOpacity style={[styles.btn]} onPress={Actions.collect}>
-                            <Text style={[styles.btnText]}>开始治疗</Text>
+                        <TouchableOpacity style={[styles.btn]}>
+                            <Text style={[styles.btnText]}>开始治疗sfdsfdv</Text>
                         </TouchableOpacity>
                     </View>
                 </ScrollView>

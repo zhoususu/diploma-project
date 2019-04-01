@@ -15,6 +15,7 @@ import { Actions } from 'react-native-router-flux';
 import tabs from '../../App'; 
 import NetUitl from '../../components/NetUitl';
 // import console = require('console');
+var Dimensions = require('Dimensions');
 
 export default class SignInOrUpScreen extends Component {
     constructor(props){
@@ -110,7 +111,7 @@ const styles = StyleSheet.create ({
         marginTop: '-15%',
     },
     userBox: {
-        width: '80%',
+        width: Dimensions.get('window').width*0.8,
         borderBottomWidth: 1,
         borderBottomColor: '#a1a4bc',
         flexDirection:'row',
@@ -125,10 +126,10 @@ const styles = StyleSheet.create ({
     },
     userStyle: {
         padding: 1,
-        width: '85%',
+        width: Dimensions.get('window').width*0.85,
     },
     btnStyle: {
-        width: '80%',
+        width: Dimensions.get('window').width*0.8,
         borderRadius: 20,
         marginTop: 30,
         backgroundColor: '#0d6eff',
@@ -144,11 +145,11 @@ const styles = StyleSheet.create ({
         justifyContent: 'space-evenly',
     },
     text1: {
-        width: '40%',
+        width: Dimensions.get('window').width*0.4,
         textAlign: 'left',
     },
     text2: {
-        width: '40%',
+        width: Dimensions.get('window').width*0.4,
         textAlign: 'right',
     }
 });

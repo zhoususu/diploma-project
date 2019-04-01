@@ -43,7 +43,7 @@ export default class Header extends Component {
                 </Text>
                 <TouchableOpacity onPress={Actions.topShow} underlayColor="transparent" style={[styles.done]}>
                     <View style={[styles.doneBox]}>
-                        <Text style={[styles.headerDoneText]}>{this.props.doneText}</Text>
+                        {/* r<Text style={[styles.headerDoneText]}>{this.props.doneText}</Text> */}
                     </View>
                 </TouchableOpacity>
             </View>

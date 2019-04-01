@@ -11,7 +11,7 @@ import {
     Text,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-
+var Dimensions = require('Dimensions');
 export default class ForgetScreen extends Component {
     constructor(props){
         super(props);
@@ -76,7 +76,7 @@ const styles = StyleSheet.create ({
         marginTop: '-15%',
     },
     userBox: {
-        width: '80%',
+        width: Dimensions.get('window').width*0.8,
         borderBottomWidth: 1,
         borderBottomColor: '#a1a4bc',
         flexDirection:'row',
@@ -91,10 +91,10 @@ const styles = StyleSheet.create ({
     },
     userStyle: {
         padding: 1,
-        width: '85%',
+        width: Dimensions.get('window').width*0.85,
     },
     btnStyle: {
-        width: '80%',
+        width: Dimensions.get('window').width*0.8,
         borderRadius: 20,
         marginTop: 30,
         backgroundColor: '#0d6eff',
