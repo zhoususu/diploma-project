@@ -35,7 +35,6 @@ export default class Header extends Component {
                             source={require('../resources/images/return.png')}
                             style={[styles.headerReturnIcon]}
                         />
-                        <Text style={[styles.headerReturnText]}>返回</Text>
                     </View>
                 </TouchableOpacity>
                 <Text style={[styles.title]}>

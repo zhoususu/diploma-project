@@ -15,12 +15,99 @@ import { Actions } from 'react-native-router-flux';
 import Common from '../../components/common'; //公共类
 import Header from '../../components/header'; //头部导航
 var Dimensions = require('Dimensions');
+import Echarts from 'native-echarts';
+const {width} = Dimensions.get('window');
 export default class TopShowScreen extends Component {
     constructor(props){
         super(props);
+        this.state = {
+            zusanli:[28, 30, 31, 30, 32, 33, 38, 29, 35, 36],
+            baihui: [30,31,33,37,36,35,33,31,29,25],
+            yanglingquan: [25,26,27,28,29,30,31,32,33,34],
+            neiguan: [39,38,37,36,35,34,33,32,31,30],
+            zhongwan: [39,38,37,36,33,31,29,35,37,39],
+            chize: [6, 9, 9, 2, 8, 7, 17, 18],
+        };
     }
     
     render() {
+        const option = {
+            //点击某一个点的数据的时候，显示出悬浮窗
+            tooltip : {
+                trigger: 'axis'
+            },
+            //可以手动选择现实几个图标
+            legend: {
+                data:['足三里','百汇','阳陵泉','内关','中脘','尺泽']
+            },
+            //各种表格
+            // toolbox: {
+            //     //改变icon的布局朝向
+            //     // orient: 'vertical',
+            //     show : true,
+            //     showTitle:true,
+            //     feature : {
+            //         //show是否显示表格，readOnly是否只读
+            //         dataView : {show: true, readOnly: false},
+            //         magicType : {
+            //           //折线图  柱形图    总数统计 分开平铺
+            //         //   type: ['line', 'bar','stack','tiled'],
+            //           type: ['line'],
+            //         },   
+            //     }
+            // },
+            xAxis : [
+                {
+                    //就是一月份这个显示为一个线段，而不是数轴那种一个点点
+                    boundaryGap:true,
+                    type : 'category',
+                    name : 'min',
+                    data : ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    name : '温度(℃)'
+                }
+            ],
+            //图形的颜色组
+            color:['rgb(249,159,94)','rgb(67,205,126)','rgb(249,159,94)','rgb(67,205,126)','rgb(249,159,94)','rgb(67,205,126)'],
+            //需要显示的图形名称，类型，以及数据设置
+            series : [
+                {
+                    name:'足三里',
+                    //默认显
+                    type:'line',
+                    data:this.state.zusanli
+                },
+                {
+                    name:'百汇',
+                    type:'line',
+                    data:this.state.baihui
+                },
+                {
+                    name:'阳陵泉',
+                    type:'line',
+                    data:this.state.yanglingquan
+                },
+                {
+                    name:'内关',
+                    type:'line',
+                    data:this.state.neiguan
+                },
+                {
+                    name:'中脘',
+                    type:'line',
+                    data:this.state.zhongwan
+                },
+                {
+                    name:'尺泽',
+                    type:'line',
+                    data:this.state.chize
+                }
+            ]
+        };
         return (
             <View style={[global.styles.screen]}>
                 <Header title={'病历详情'} doneText={"完成"} style={[styles.header]} />
@@ -38,21 +125,29 @@ export default class TopShowScreen extends Component {
                         <Text style={[styles.write]}>34岁</Text>
                     </View>
                     <View style={[styles.box]}>
-                        <Text style={[styles.title]}>就诊日期</Text>
-                        <Text style={[styles.write]}>2019-03-14 12:05</Text>
+                        <Text style={[styles.title]}>联系方式</Text>
+                        <Text style={[styles.write]}>12345678901</Text>
                     </View>
                     <View style={[styles.box]}>
-                        <Text style={[styles.title]}>病症</Text>
+                        <Text style={[styles.title]}>就诊日期</Text>
+                        <Text style={[styles.write]}>2019/03/14 12:05</Text>
+                    </View>
+                    <View style={[styles.box]}>
+                        <Text style={[styles.title]}>诊断结果</Text>
                         <Text style={[styles.write]}>面部神经麻痹</Text>
                     </View>
                     <View style={[styles.box]}>
-                        <Text style={[styles.title]}>治疗穴位</Text>
-                        <Text style={[styles.write]}>足三里、百汇、阳陵泉、内关、中脘、尺泽</Text>
+                        <Text style={[styles.title]}>治疗时间</Text>
+                        <Text style={[styles.write]}>30min</Text>
                     </View>
                     <View style={[styles.box]}>
-                        <Text style={[styles.title]}>治疗记录</Text>
-                        <Text style={[styles.write]}>统计图</Text>
+                        <Text style={[styles.title]}>治疗穴位</Text>
+                        <Text style={[styles.write]}>肩井、命门、肾俞、风市、委中、承山</Text>
                     </View>
+                    <View style={[styles.box]}>
+                        <Text style={[styles.title]}>治疗情况</Text>
+                    </View>
+                    <Echarts option={option} height={300} width={width}/>
                 </ScrollView>
             </View>
         )

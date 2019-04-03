@@ -37,11 +37,6 @@ export default class HomeTabScreen extends Component {
                 </View>
                 <ScrollView>
                     <View style={styles.box}>
-                        <Text style={[styles.title]}>就诊日期</Text>
-                        <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={false}/>
-                    </View>
-                    <View style={styles.box}>
                         <Text style={[styles.title]}>姓名</Text>
                         <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
                         clearTextOnFocus={true} multiline={false}/>
@@ -52,24 +47,36 @@ export default class HomeTabScreen extends Component {
                         clearTextOnFocus={true} multiline={false}/>
                     </View>
                     <View style={styles.box}>
-                        <Text style={[styles.title]}>联系电话</Text>
+                        <Text style={[styles.title]}>年龄</Text>
                         <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
                         clearTextOnFocus={true} multiline={false}/>
+                    </View>
+                    <View style={styles.box}>
+                        <Text style={[styles.title]}>联系方式</Text>
+                        <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
+                        clearTextOnFocus={true} multiline={false}/>
+                    </View>
+                    <View style={styles.box}>
+                        <Text style={[styles.title]}>就诊日期</Text>
+                        <Text style={[styles.write]}>2019/03/15</Text>
                     </View>
                     <View style={styles.box}>
                         <Text style={[styles.title]}>诊断结果</Text>
                         <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
                         clearTextOnFocus={true} multiline={true}/>
                     </View>
+                    <View style={styles.box}>
+                        <View style={[styles.searchBox]}>
+                            <Image style={[styles.icon]} source={require('../resources/images/src/sousuo.png')}/>
+                            <TextInput placeholder ="请输入穴位首拼或者全名进行搜索" placeholderTextColor="#a1a4bc"
+                                style={[styles.searchStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
+                                clearTextOnFocus={true} 
+                            />
+                        </View>
+                    </View>
                 </ScrollView>
                 {/* 搜索 */}
-                <View style={[styles.searchBox]}>
-                    <Image style={[styles.icon]} source={require('../resources/images/src/sousuo.png')}/>
-                    <TextInput placeholder ="请输入穴位首拼或者全名进行搜索" placeholderTextColor="#a1a4bc"
-                        style={[styles.searchStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} 
-                    />
-                </View>
+                
                 {/* <View style={[{marginTop: 10}]}>
                     <Button onPress={Actions.signInOrUp} title="免注册登录" />
                 </View>

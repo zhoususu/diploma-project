@@ -32,20 +32,21 @@ export default class MineTabScreen extends Component {
                 {/* 第一行 */}
                 <FlatList
                     data={[
-                        {key: '职称',value:'主治医生'},
+                        {key: '联系方式',value:'18382468693'},
+                        {key: '身份证号',value:'510421199805268321'},
                         {key: '毕业院校',value:'成都中医药大学'},
-                        {key: '联系方式',value:'18382468693'},                        
-                        {key: '身份证号',value:'XXXXXXXXXXXXXXXXXX'},
-                        {key: '从业年限',value:'5年'},
-                        {key: '擅长病种',value:'妇科、儿科'},
-                        {key: '坐诊医院',value:'四川省中医院'},
-                        {key: '科室',value:'针灸科'},
+                        {key: '职称',value:'主治医师'},
+                        {key: '从业年限',value:'8年'},
+                        {key: '坐诊医院',value:'四川省中医院'},                        
+                        {key: '所属科室',value:'针灸科'},
+                        {key: '擅长病种',value:'儿科'},
+                        {key: '个人简介',value:'从业至今，对儿科常见病、多发病及各类儿科疑难杂症有独特见解。擅长通过针灸、推拿、理疗等方式之劳坐骨神经痛、腰椎间盘突出等症状。'},
                     ]}
                     renderItem={({item}) => 
                         <View style={styles.box}>
                             <Text style={[styles.title]}>{item.key}</Text>
                             <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                            clearTextOnFocus={true} multiline={false} value={item.value}/>
+                            clearTextOnFocus={true} multiline={true} value={item.value}/>
                         </View>
                     }
                 />
@@ -90,7 +91,6 @@ const styles = StyleSheet.create ({
     write: {
         padding: 0,
         fontSize: 14,
-        height:25,
         width: Dimensions.get('window').width*0.7,
     },
     out: {

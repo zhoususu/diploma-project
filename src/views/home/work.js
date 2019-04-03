@@ -41,16 +41,20 @@ export default class WorkScreen extends Component {
                         <Text style={[styles.write]}>34岁</Text>
                     </View>
                     <View style={[styles.box]}>
-                        <Text style={[styles.title]}>就诊日期</Text>
-                        <Text style={[styles.write]}>2019-03-14 12:05</Text>
+                        <Text style={[styles.title]}>联系方式</Text>
+                        <Text style={[styles.write]}>12345678901</Text>
                     </View>
                     <View style={[styles.box]}>
-                        <Text style={[styles.title]}>病症</Text>
+                        <Text style={[styles.title]}>就诊日期</Text>
+                        <Text style={[styles.write]}>2019/03/14 12:05</Text>
+                    </View>
+                    <View style={[styles.box]}>
+                        <Text style={[styles.title]}>诊断结果</Text>
                         <Text style={[styles.write]}>面部神经麻痹</Text>
                     </View>
                     <View style={[styles.box]}>
                         <Text style={[styles.title]}>治疗穴位</Text>
-                        <Text style={[styles.write]}>足三里、百汇、阳陵泉、内关、中脘、尺泽</Text>
+                        <Text style={[styles.write]}>肩井、命门、肾俞、风市、委中、承山</Text>
                     </View>
                     <Text style={[styles.title1]}>治疗参数设置</Text>
                     <View style={[styles.size]}>
@@ -116,9 +120,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     sizeBox: {
-        width:Dimensions.get('window').width*0.95,
+        width:Dimensions.get('window').width*0.9,
         height:Dimensions.get('window').height*0.3,
-        borderRadius: 25,
+        borderRadius: 5,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around',

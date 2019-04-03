@@ -17,13 +17,100 @@ var Dimensions = require('Dimensions');
 //自定义组件
 import Common from '../../components/common'; //公共类
 import Header from '../../components/header'; //头部导航
-
+import Echarts from 'native-echarts';
+const {width} = Dimensions.get('window');
 export default class collectScreen extends Component {
     constructor(props){
         super(props);
+        this.state = {
+            zusanli:[28, 30, 31, 30, 32, 33, 38, 29, 35, 36],
+            baihui: [30,31,33,37,36,35,33,31,29,25],
+            yanglingquan: [25,26,27,28,29,30,31,32,33,34],
+            neiguan: [39,38,37,36,35,34,33,32,31,30],
+            zhongwan: [39,38,37,36,33,31,29,35,37,39],
+            chize: [6, 9, 9, 2, 8, 7, 17, 18],
+        };
     }
 
     render() {
+        const option = {
+            //点击某一个点的数据的时候，显示出悬浮窗
+            tooltip : {
+                trigger: 'axis'
+            },
+            //可以手动选择现实几个图标
+            legend: {
+                data:['足三里','百汇','阳陵泉','内关','中脘','尺泽']
+            },
+            //各种表格
+            // toolbox: {
+            //     //改变icon的布局朝向
+            //     // orient: 'vertical',
+            //     show : true,
+            //     showTitle:true,
+            //     feature : {
+            //         //show是否显示表格，readOnly是否只读
+            //         dataView : {show: true, readOnly: false},
+            //         magicType : {
+            //           //折线图  柱形图    总数统计 分开平铺
+            //         //   type: ['line', 'bar','stack','tiled'],
+            //           type: ['line'],
+            //         },   
+            //     }
+            // },
+            xAxis : [
+                {
+                    //就是一月份这个显示为一个线段，而不是数轴那种一个点点
+                    boundaryGap:false,
+                    type : 'category',
+                    name : 'min',
+                    data : ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    name : '温度(℃)',
+                    top:'1%'
+                }
+            ],
+            //图形的颜色组
+            color:['rgb(249,159,94)','rgb(67,205,126)','#ff7f00','#6a0aab','#4282d3','#00a779'],
+            //需要显示的图形名称，类型，以及数据设置
+            series : [
+                {
+                    name:'足三里',
+                    //默认显
+                    type:'line',
+                    data:this.state.zusanli
+                },
+                {
+                    name:'百汇',
+                    type:'line',
+                    data:this.state.baihui
+                },
+                {
+                    name:'阳陵泉',
+                    type:'line',
+                    data:this.state.yanglingquan
+                },
+                {
+                    name:'内关',
+                    type:'line',
+                    data:this.state.neiguan
+                },
+                {
+                    name:'中脘',
+                    type:'line',
+                    data:this.state.zhongwan
+                },
+                {
+                    name:'尺泽',
+                    type:'line',
+                    data:this.state.chize
+                }
+            ]
+        };
         return (
             <View style={[global.styles.screen]}>
                 <Header title={"数据收集"} style={[styles.header]} />
@@ -37,71 +124,35 @@ export default class collectScreen extends Component {
                         <Text style={[styles.write]}>男</Text>
                     </View>
                     <View style={[styles.box]}>
-                        <Text style={[styles.title]}>年龄</Text>
-                        <Text style={[styles.write]}>34岁</Text>
-                    </View>
-                    <View style={[styles.box]}>
-                        <Text style={[styles.title]}>就诊日期</Text>
-                        <Text style={[styles.write]}>2019-03-14 12:05</Text>
-                    </View>
-                    <View style={[styles.box]}>
-                        <Text style={[styles.title]}>病症</Text>
+                        <Text style={[styles.title]}>诊断结果</Text>
                         <Text style={[styles.write]}>面部神经麻痹</Text>
                     </View>
                     <View style={[styles.box]}>
                         <Text style={[styles.title]}>治疗穴位</Text>
-                        <Text style={[styles.write]}>足三里、百汇、阳陵泉、内关、中脘、尺泽</Text>
+                        <Text style={[styles.write]}>肩井、命门、肾俞、风市、委中、承山</Text>
                     </View>
                     <Text style={[styles.title1]}>治疗参数设置</Text>
                     <View style={[styles.size]}>
-                        <View style={[styles.sizeBox]}>
-                            <View style={[styles.one]}>
-                                <Text style={[styles.boxTitle]}>温度
-                                    <Text style={[styles.boxDan]}>（℃）</Text>
-                                </Text>
-                                <View style={[styles.boxBack]}>
-                                    <TouchableOpacity style={[styles.boxJian]}>
-                                        <Image source={require('../../resources/images/tabs/jian.png')} style={[styles.boxImage]}/>
-                                    </TouchableOpacity>
-                                    <Text style={[styles.boxContent]}>30</Text>
-                                    <TouchableOpacity style={[styles.Jia]}>
-                                        <Image source={require('../../resources/images/tabs/jia.png')} style={[styles.boxImage]}/>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            <View style={[styles.one]}>
-                                <Text style={[styles.boxTitle]}>强度
-                                    <Text style={[styles.boxDan]}>（级）</Text>
-                                </Text>
-                                <View style={[styles.boxBack]}>
-                                    <TouchableOpacity style={[styles.boxJian]}>
-                                        <Image source={require('../../resources/images/tabs/jian.png')} style={[styles.boxImage]}/>
-                                    </TouchableOpacity>
-                                    <Text style={[styles.boxContent]}>5</Text>
-                                    <TouchableOpacity style={[styles.Jia]}>
-                                        <Image source={require('../../resources/images/tabs/jia.png')} style={[styles.boxImage]}/>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            <View style={[styles.one]}>
-                                <Text style={[styles.boxTitle]}>时间
-                                    <Text style={[styles.boxDan]}>（min）</Text>
-                                </Text>
-                                <View style={[styles.boxBack]}>
-                                    <TouchableOpacity style={[styles.boxJian]}>
-                                        <Image source={require('../../resources/images/tabs/jian.png')} style={[styles.boxImage]}/>
-                                    </TouchableOpacity>
-                                    <Text style={[styles.boxContent]}>30</Text>
-                                    <TouchableOpacity style={[styles.Jia]}>
-                                        <Image source={require('../../resources/images/tabs/jia.png')} style={[styles.boxImage]}/>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
+                        <View style={[styles.one]}>
+                            <Text style={[styles.boxTitle]}>温度 30
+                                <Text style={[styles.boxDan]}>（℃）</Text>
+                            </Text>
+                        </View>
+                        <View style={[styles.one]}>
+                            <Text style={[styles.boxTitle]}>强度 5
+                                <Text style={[styles.boxDan]}>（级）</Text>
+                            </Text>
+                        </View>
+                        <View style={[styles.one]}>
+                            <Text style={[styles.boxTitle]}>时间 30
+                                <Text style={[styles.boxDan]}>（min）</Text>
+                            </Text>
                         </View>
                     </View>
+                    <Echarts option={option} height={300} width={width}/>
                     <View style={[styles.size]}>
                         <TouchableOpacity style={[styles.btn]}>
-                            <Text style={[styles.btnText]}>开始治疗sfdsfdv</Text>
+                            <Text style={[styles.btnText]}>治疗进度</Text>
                         </TouchableOpacity>
                     </View>
                 </ScrollView>
@@ -113,17 +164,7 @@ const styles = StyleSheet.create({
     size: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
-    },
-    sizeBox: {
-        width:Dimensions.get('window').width*0.95,
-        height:Dimensions.get('window').height*0.3,
-        borderRadius: 25,
-        flexDirection: 'row',
-        alignItems: 'center',
         justifyContent: 'space-around',
-        elevation: 2,
-        padding: 10,
     },
     one: {
         width:Dimensions.get('window').width*0.20,
