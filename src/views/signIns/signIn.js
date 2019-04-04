@@ -21,8 +21,8 @@ export default class SignInOrUpScreen extends Component {
     constructor(props){
         super(props);
         this.state = {
-            username: '',
-            password: '',
+            username: 'zss',
+            password: '123456',
         }
     }
 
@@ -51,14 +51,14 @@ export default class SignInOrUpScreen extends Component {
                         clearTextOnFocus={true} onChangeText={(text) => {this.password = text}} />
                 </View>
                 {/* 按钮 */}
-                <TouchableOpacity onPressCallback={this.onPressCallback} style={[styles.btnStyle]}
-                    disabled={
-                        this.state.errorEmail === '' &&
-                        this.state.errorPass === ''
-                            ? false
-                            : true
-                    }>
-                {/* onPress={Actions.tabs} */}
+                <TouchableOpacity style={[styles.btnStyle]}
+                    onPress={
+                        this.state.username === 'zss' &&
+                        this.state.password === '123456'
+                            ? Actions.tabs
+                            : global.toast('账号或密码错误')
+                    }
+                >
                     <Text style={[styles.btnText]} >登录</Text>
                 </TouchableOpacity>
                 {/* 连接 */}
@@ -71,14 +71,9 @@ export default class SignInOrUpScreen extends Component {
     }
 
     onPressCallback = () => {
-        let formData = new FormData();
-        formData.append("loginName",this.userName);
-        formData.append("pwd",this.password);
-        let url = "http://localhost:8080/loginApp";
-        NetUitl.postJson(url,formData,(responseText) => {
-            alert(responseText);
-            this.onLoginSuccess();
-        })
+       if(this.state.username === 'zss' && this.state.password === '123456'){
+           Actions.tabs
+       }
     }
     
     onLoginSuccess() {

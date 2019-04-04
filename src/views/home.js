@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import {
     StyleSheet,
-    FlatList,
+    TouchableOpacity,
     ScrollView,
     View,
     Text,
@@ -96,6 +96,11 @@ export default class HomeTabScreen extends Component {
                             <Text>百汇</Text>
                         </View>
                     </View>
+                    <View style={[styles.size]}>
+                        <TouchableOpacity style={[styles.btn]} onPress={Actions.headset}>
+                            <Text style={[styles.btnText]}>开始治疗</Text>
+                        </TouchableOpacity>
+                    </View>
                 </ScrollView>
                 {/* 搜索 */}
                 
@@ -182,5 +187,21 @@ const styles = StyleSheet.create ({
         borderColor: '#0d6eff',
         marginLeft: Dimensions.get('window').width*0.05,
         marginRight: Dimensions.get('window').width*0.05,
-    }
+    },
+    size: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    btn: {
+        width: Dimensions.get('window').width*0.8,
+        borderRadius: 20,
+        marginTop: 30,
+        backgroundColor: '#0d6eff',
+    },
+    btnText: {
+        color: '#ffffff',
+        textAlign: 'center',
+        lineHeight: 30,
+    },
 });

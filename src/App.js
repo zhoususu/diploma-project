@@ -130,19 +130,19 @@ export default class App extends Component {
                             key="tabs"
                             component={Tabs}
                             title="首页"
-                            initial={true}
+                            // initial={true}
                             hideNavBar={true} //此处以及其他页都隐藏了导航，我打算自定义组件作为头部导航栏。
                         />
                         {/*播放*/}
                         {/*<Scene key="play" component={PlayScreen} title="正在播放" hideNavBar={true} />*/}
                         {/*登录*/}
                         <Scene key="signInOrUp" component={SignInOrUpScreen} title="免注册登录" hideNavBar={true} />
-                        <Scene key="signIn" component={SignInScreen} title="登录" hideNavBar={true} />
+                        <Scene key="signIn" component={SignInScreen} title="登录" hideNavBar={true} initial={true}/>
                         <Scene key="forget" component={ForgetScreen} title="忘记密码" hideNavBar={true} />
                         {/*内容页*/}
                         <Scene key="topShow" component={TopShowScreen} title="内容页" hideNavBar={true} />
                         <Scene key="Work" component={WorkScreen} title="内容页1" hideNavBar={true} />
-                        <Scene key="collect" component={collectScreen} title="内容页1" hideNavBar={true} />
+                        <Scene key="collect" component={collectScreen} title="内容页2" hideNavBar={true} />
                     </Scene>
                 </Router>
                 <Toast ref="toast" opacity={0.8}/>
