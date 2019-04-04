@@ -65,13 +65,35 @@ export default class HomeTabScreen extends Component {
                         <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
                         clearTextOnFocus={true} multiline={true}/>
                     </View>
-                    <View style={styles.box}>
+                    <View style={styles.box1}>
                         <View style={[styles.searchBox]}>
                             <Image style={[styles.icon]} source={require('../resources/images/src/sousuo.png')}/>
                             <TextInput placeholder ="请输入穴位首拼或者全名进行搜索" placeholderTextColor="#a1a4bc"
                                 style={[styles.searchStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
                                 clearTextOnFocus={true} 
                             />
+                        </View>
+                    </View>
+                    <View style={styles.box1}>
+                        <View style={styles.xue}>
+                            <Text>百汇</Text>
+                        </View>
+                        <View style={styles.xue}>
+                            <Text>百汇</Text>
+                        </View>
+                        <View style={styles.xue}>
+                            <Text>百汇</Text>
+                        </View>
+                    </View>
+                    <View style={styles.box1}>
+                        <View style={styles.xue}>
+                            <Text>百汇</Text>
+                        </View>
+                        <View style={styles.xue}>
+                            <Text>百汇</Text>
+                        </View>
+                        <View style={styles.xue}>
+                            <Text>百汇</Text>
                         </View>
                     </View>
                 </ScrollView>
@@ -110,7 +132,7 @@ const styles = StyleSheet.create ({
         backgroundColor: '#f7f7f7',
         width: Dimensions.get('window').width*0.8,
         borderRadius:40,
-        marginTop: 10,
+        marginTop: 5,
         flexDirection:'row',
         alignItems:'center',
     },
@@ -133,6 +155,14 @@ const styles = StyleSheet.create ({
         borderBottomWidth: 1,
         borderBottomColor: '#f1f1f1',
     },
+    box1: {
+        width: Dimensions.get('window').width,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderBottomColor: '#f1f1f1',
+        marginBottom:15,
+    },
     title: {
         color: '#3e334d',
         fontSize: 14,
@@ -143,4 +173,14 @@ const styles = StyleSheet.create ({
         fontSize: 14,
         width: Dimensions.get('window').width*0.7,
     },
+    xue: {
+        borderWidth: 2,
+        padding:2,
+        width:Dimensions.get('window').width*0.2,
+        borderRadius:20,
+        alignItems: 'center',
+        borderColor: '#0d6eff',
+        marginLeft: Dimensions.get('window').width*0.05,
+        marginRight: Dimensions.get('window').width*0.05,
+    }
 });
