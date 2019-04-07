@@ -114,7 +114,7 @@ export default class TopShowScreen extends Component {
                 <ScrollView>
                     <View style={[styles.box]}>
                         <Text style={[styles.title]}>姓名</Text>
-                        <Text style={[styles.write]}>张梓林</Text>
+                        <Text style={[styles.write]}>{this.props.username}</Text>
                     </View>
                     <View style={[styles.box]}>
                         <Text style={[styles.title]}>性别</Text>
@@ -130,11 +130,11 @@ export default class TopShowScreen extends Component {
                     </View>
                     <View style={[styles.box]}>
                         <Text style={[styles.title]}>就诊日期</Text>
-                        <Text style={[styles.write]}>2019/03/14 12:05</Text>
+                        <Text style={[styles.write]}>{this.props.usertime}</Text>
                     </View>
                     <View style={[styles.box]}>
                         <Text style={[styles.title]}>诊断结果</Text>
-                        <Text style={[styles.write]}>面部神经麻痹</Text>
+                        <Text style={[styles.write]}>{this.props.usersign}</Text>
                     </View>
                     <View style={[styles.box]}>
                         <Text style={[styles.title]}>治疗时间</Text>

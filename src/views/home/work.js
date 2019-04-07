@@ -30,7 +30,7 @@ export default class WorkScreen extends Component {
                 <ScrollView contentContainerStyle = {{flex:1}}>
                     <View style={[styles.box]}>
                         <Text style={[styles.title]}>姓名</Text>
-                        <Text style={[styles.write]}>张梓林</Text>
+                        <Text style={[styles.write]}>{this.props.username}</Text>
                     </View>
                     <View style={[styles.box]}>
                         <Text style={[styles.title]}>性别</Text>
@@ -50,7 +50,7 @@ export default class WorkScreen extends Component {
                     </View>
                     <View style={[styles.box]}>
                         <Text style={[styles.title]}>诊断结果</Text>
-                        <Text style={[styles.write]}>面部神经麻痹</Text>
+                        <Text style={[styles.write]}>{this.props.usersign}</Text>
                     </View>
                     <View style={[styles.box]}>
                         <Text style={[styles.title]}>治疗穴位</Text>

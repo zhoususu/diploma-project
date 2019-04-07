@@ -40,7 +40,9 @@ export default class HeadsetTabScreen extends Component {
                         {key: '刘轩',image: require('../resources/images/src/man.png'),btn: '治疗中',sign: '三叉神经痛'},
                     ]}
                     renderItem={({item}) => 
-                        <TouchableOpacity onPress={item.btn==='待治疗'?Actions.Work:Actions.collect}>
+                        <TouchableOpacity onPress={item.btn==='待治疗'?
+                            () => {Actions.Work({username:item.key,usersign:item.sign})}:
+                            () => {Actions.collect({username:item.key,usersign:item.sign})}}>
                             <View style={styles.box}>
                                 <Image source={item.image} style={[styles.image]}/>
                                 <View>

@@ -54,7 +54,7 @@ export default class BoughtTabScreen extends Component {
                         // {key: 'Julie'},
                     ]}
                     renderItem={({item}) => 
-                        <TouchableOpacity onPress={Actions.topShow}>
+                        <TouchableOpacity onPress={() => {Actions.topShow({username:item.key,usertime:item.time,usersign:item.sign})}}>
                             <View style={styles.box}>
                                 <Image source={item.image} style={[styles.image]}/>
                                 <View>

@@ -9,16 +9,23 @@ import {
     ScrollView,
     View,
     Text,
+    Alert,
     Image,
     TextInput,
 } from 'react-native';
 //第三方插件
 import { Actions } from 'react-native-router-flux';
+// import console = require('console');
 var Dimensions = require('Dimensions');
 export default class HomeTabScreen extends Component {
     constructor(props){
         super(props);
-        this.state={};
+        this.name='';
+        this.sex='';
+        this.age='';
+        this.phoneNum='';
+        this.data='';
+        this.diagnose='';
     }
 
     _showLoading() {
@@ -27,6 +34,8 @@ export default class HomeTabScreen extends Component {
             global.closeLoading();
         },500)
     }
+
+    
 
     render() {
         return (
@@ -39,22 +48,22 @@ export default class HomeTabScreen extends Component {
                     <View style={styles.box}>
                         <Text style={[styles.title]}>姓名</Text>
                         <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={false}/>
+                        clearTextOnFocus={true} multiline={false} onChangeText={(text) => {this.name=text}}/>
                     </View>
                     <View style={styles.box}>
                         <Text style={[styles.title]}>性别</Text>
                         <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={false}/>
+                        clearTextOnFocus={true} multiline={false} onChangeText={(text) => {this.sex=text}}/>
                     </View>
                     <View style={styles.box}>
                         <Text style={[styles.title]}>年龄</Text>
                         <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={false}/>
+                        clearTextOnFocus={true} multiline={false} onChangeText={(text) => {this.age=text}}/>
                     </View>
                     <View style={styles.box}>
                         <Text style={[styles.title]}>联系方式</Text>
                         <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={false}/>
+                        clearTextOnFocus={true} multiline={false} onChangeText={(text) => {this.phoneNum=text}}/>
                     </View>
                     <View style={styles.box}>
                         <Text style={[styles.title]}>就诊日期</Text>
@@ -63,14 +72,14 @@ export default class HomeTabScreen extends Component {
                     <View style={styles.box}>
                         <Text style={[styles.title]}>诊断结果</Text>
                         <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={true}/>
+                        clearTextOnFocus={true} multiline={true} onChangeText={(text) => {this.diagnose=text}}/>
                     </View>
                     <View style={styles.box1}>
                         <View style={[styles.searchBox]}>
                             <Image style={[styles.icon]} source={require('../resources/images/src/sousuo.png')}/>
                             <TextInput placeholder ="请输入穴位首拼或者全名进行搜索" placeholderTextColor="#a1a4bc"
                                 style={[styles.searchStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                                clearTextOnFocus={true} 
+                                clearTextOnFocus={true} onChangeText={(text) => {this.check(text)}}
                             />
                         </View>
                     </View>
@@ -98,7 +107,7 @@ export default class HomeTabScreen extends Component {
                     </View>
                     <View style={[styles.size]}>
                         <TouchableOpacity style={[styles.btn]} onPress={Actions.headset}>
-                            <Text style={[styles.btnText]}>开始治疗</Text>
+                            <Text style={[styles.btnText]} onPress={this.submit}>确认提交</Text>
                         </TouchableOpacity>
                     </View>
                 </ScrollView>
@@ -119,7 +128,40 @@ export default class HomeTabScreen extends Component {
             </View>
         )
     }
+    check(text){
+        fetch('http://47.106.102.235:8088/dimples/acupoint/name-spell',{
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body:text,
+        }).then((response) => response.json()).then(
+            (responsJson) => {
+                responsJson.message;
+            }
+        );
+    }
+
+    submit(){
+        fetch('http://47.106.102.235:8088/dimples/recipe?'+'',{
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        }).then((response) => response.json()).then(
+            (responsJson) => {
+                if(responsJson.message === '操作成功'){
+                    Actions.tabs();
+                } else {
+                    global.toast('提交失败');
+                }
+            }
+        )
+    }
 }
+
 
 const styles = StyleSheet.create ({
     backView: {
