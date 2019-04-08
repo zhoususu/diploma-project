@@ -25,7 +25,7 @@ export default class MineTabScreen extends Component {
                     <Image source={require('../resources/images/src/miss.jpg')} style={[styles.imageStyle]} />
                     <Text style={[styles.headText]}>Sharon Sue</Text>
                     <TouchableOpacity style={[styles.outBox]} onPress={Actions.signIn}>
-                        <Image source={require('../resources/images/tabs/out.png')} style={[styles.out]} />
+                        <Image source={require('../resources/images/src/out.png')} style={[styles.out]} />
                     </TouchableOpacity>
                 </View>
                 {/* 第一行 */}
@@ -95,6 +95,7 @@ const styles = StyleSheet.create ({
     out: {
         width:Dimensions.get('window').width*0.05,
         height:Dimensions.get('window').width*0.05,
+        resizeMode: 'cover',
     },
     outBox: {
         position: 'absolute',

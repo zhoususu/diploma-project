@@ -16,6 +16,7 @@ import {
 //第三方插件
 import { Actions } from 'react-native-router-flux';
 // import console = require('console');
+import ModalDropdown from 'react-native-modal-dropdown';
 var Dimensions = require('Dimensions');
 export default class HomeTabScreen extends Component {
     constructor(props){
@@ -117,6 +118,7 @@ export default class HomeTabScreen extends Component {
                                 style={[styles.searchStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
                                 clearTextOnFocus={true} onChangeText={(text) => {this.check(text)}}
                             />
+                            <ModalDropdown options={['option 1', 'option 2']}/>
                         </View>
                     </View>
                     <View style={styles.box1}>
@@ -165,17 +167,15 @@ export default class HomeTabScreen extends Component {
         )
     }
     check(text){
-        console.warn("ssss");
-        fetch('http://47.106.102.235:8088/dimples/acupoint/name-spell',{
+        fetch('http://47.106.102.235:8088/dimples/acupoint/name-spell?'+'data='+text,{
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body:text,
         }).then((response) => response.json()).then(
             (responsJson) => {
-                responsJson.message;
+                console.warn(responsJson.data);
             }
         );
     }
