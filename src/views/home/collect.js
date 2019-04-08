@@ -134,28 +134,28 @@ export default class collectScreen extends Component {
                     <Text style={[styles.title1]}>治疗参数设置</Text>
                     <View style={[styles.size]}>
                         <View style={[styles.one]}>
-                            <Text style={[styles.boxTitle]}>温度 30
+                            <Text style={[styles.boxTitle]}>温度 {this.props.temperature1}
                                 <Text style={[styles.boxDan]}>（℃）</Text>
                             </Text>
                         </View>
                         <View style={[styles.one]}>
-                            <Text style={[styles.boxTitle]}>强度 5
+                            <Text style={[styles.boxTitle]}>强度 {this.props.intensity1}
                                 <Text style={[styles.boxDan]}>（级）</Text>
                             </Text>
                         </View>
                         <View style={[styles.one]}>
-                            <Text style={[styles.boxTitle]}>时间 30
+                            <Text style={[styles.boxTitle]}>时间 {this.props.time1}
                                 <Text style={[styles.boxDan]}>（min）</Text>
                             </Text>
                         </View>
                     </View>
                     <Echarts option={option} height={300} width={width}/>
-                    <View style={[styles.size]}>
-                        <TouchableOpacity style={[styles.btn]}>
-                            <Text style={[styles.btnText]}>治疗进度</Text>
-                        </TouchableOpacity>
-                    </View>
                 </ScrollView>
+                <View style={[styles.size]}>
+                    <TouchableOpacity style={[styles.btn]}>
+                        <Text style={[styles.btnText]}>治疗进度</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         )
     }
@@ -215,6 +215,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginTop: 30,
         backgroundColor: '#0d6eff',
+        marginBottom:Dimensions.get('window').width*0.05,
     },
     btnText: {
         color: '#ffffff',

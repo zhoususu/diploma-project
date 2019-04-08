@@ -15,7 +15,34 @@ var Dimensions = require('Dimensions');
 export default class ForgetScreen extends Component {
     constructor(props){
         super(props);
+        this.username='';
+        this.idnumber='';
     }
+
+    login = () => { 
+        if(this.username===''){
+            global.toast('请输入用户名');
+        } else if(this.idnumber === ''){
+            global.toast('请输入身份证号');
+        } else{
+            fetch('http://47.106.102.235:8088/dimples/user-system/phone/card',{
+            method: 'get',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            }).then((response) => response.json()).then(
+                (responsJson) => {
+                    if(responsJson.message === '操作成功'){
+                        Actions.tabs();
+                    } else {
+                        global.toast('账号或身份证号码错误');
+                        // console.warn(responsJson.message);
+                    }
+                }
+            )
+        }
+    };
 
     render() {
         return (
@@ -30,20 +57,20 @@ export default class ForgetScreen extends Component {
                 {/* 用户名 */}
                 <View style={[styles.userBox]}>
                     <Image style={[styles.icon]} source={require('../../resources/images/src/yonghu.png')} />
-                    <TextInput placeholder ="请输入绑定手机号码" placeholderTextColor="#a1a4bc"
+                    <TextInput placeholder ="请输入手机号码" placeholderTextColor="#a1a4bc"
                         style={[styles.userStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} />
+                        clearTextOnFocus={true} onChangeText={(text) => {this.username=text}} />
                 </View>
                 {/* 密码 */}
                 <View style={[styles.userBox]}>
                     <Image style={[styles.icon]} source={require('../../resources/images/src/50.png')} />
                     <TextInput placeholder ="请输入身份证号" placeholderTextColor="#a1a4bc" 
                         style={[styles.userStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} />
+                        clearTextOnFocus={true} onChangeText={(text) => {this.idnumber=text}} />
                 </View>
                 {/* 按钮 */}
                 <View style={[styles.btnStyle]}>
-                    <Text style={[styles.btnText]} onPress={Actions.tabs}>登录</Text>
+                    <Text style={[styles.btnText]} onPress={this.login}>登录</Text>
                 </View>
                 {/* 连接 */}
                 <View style={[styles.textStyle]}>

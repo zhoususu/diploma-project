@@ -28,7 +28,11 @@ export default class SignInOrUpScreen extends Component {
     };
 
     register = () => {
-        if(this.password === this.repass) {
+        if(this.password === ''){
+            global.toast('请输入密码');
+        } else if (this.repass === ''){
+            global.toast('请确认密码');
+        } else if(this.password === this.repass) {
             fetch('http://47.106.102.235:8088/dimples/user-system?'+'account='+this.username+'&password='+this.password,{
             method: 'POST',
             headers: {
@@ -42,6 +46,7 @@ export default class SignInOrUpScreen extends Component {
                         Actions.signIn();
                     } else {
                         global.toast('注册失败，请重试');
+                        // console.warn(responsJson.message);
                     }
                 }
             )

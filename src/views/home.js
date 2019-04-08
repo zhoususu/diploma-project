@@ -24,9 +24,11 @@ export default class HomeTabScreen extends Component {
         this.sex='';
         this.age='';
         this.phoneNum='';
-        this.data='';
+        this.date='';
         this.diagnose='';
     }
+
+    
 
     _showLoading() {
         global.showLoading();
@@ -35,9 +37,43 @@ export default class HomeTabScreen extends Component {
         },500)
     }
 
+    daytime(){
+        var date = new Date();
+        var year = date.getFullYear().toString();
+        var month = (date.getMonth()+1).toString();
+        var day =date.getDate().toString();
+        return year+'/'+month+ '/'+day;
+    }
+
+    submit(){
+        fetch('http://47.106.102.235:8088/dimples/recipe'+'',{
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body:  JSON.stringify({
+                name: this.name,
+                sex: this.sex,
+                age: this.age,
+                phone: this.phoneNum,
+                date: this.date,
+                diagnose: this.diagnose,
+            }),
+        }).then((response) => response.json()).then(
+            (responsJson) => {
+                if(responsJson.message === '操作成功'){
+                    Actions.tabs();
+                } else {
+                    global.toast('提交失败');
+                }
+            }
+        )
+    }
     
 
     render() {
+        this.date=this.daytime();
         return (
             <View style={[global.styles.screen]}>
                 {/* 标题 */}
@@ -67,7 +103,7 @@ export default class HomeTabScreen extends Component {
                     </View>
                     <View style={styles.box}>
                         <Text style={[styles.title]}>就诊日期</Text>
-                        <Text style={[styles.write]}>2019/03/15</Text>
+                        <Text style={[styles.write]}>{this.date}</Text>
                     </View>
                     <View style={styles.box}>
                         <Text style={[styles.title]}>诊断结果</Text>
@@ -106,8 +142,8 @@ export default class HomeTabScreen extends Component {
                         </View>
                     </View>
                     <View style={[styles.size]}>
-                        <TouchableOpacity style={[styles.btn]} onPress={Actions.headset}>
-                            <Text style={[styles.btnText]} onPress={this.submit}>确认提交</Text>
+                        <TouchableOpacity style={[styles.btn]} onPress={()=>{this.submit()}}>
+                            <Text style={[styles.btnText]}>确认提交</Text>
                         </TouchableOpacity>
                     </View>
                 </ScrollView>
@@ -129,6 +165,7 @@ export default class HomeTabScreen extends Component {
         )
     }
     check(text){
+        console.warn("ssss");
         fetch('http://47.106.102.235:8088/dimples/acupoint/name-spell',{
             method: 'GET',
             headers: {
@@ -143,25 +180,8 @@ export default class HomeTabScreen extends Component {
         );
     }
 
-    submit(){
-        fetch('http://47.106.102.235:8088/dimples/recipe?'+'',{
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-        }).then((response) => response.json()).then(
-            (responsJson) => {
-                if(responsJson.message === '操作成功'){
-                    Actions.tabs();
-                } else {
-                    global.toast('提交失败');
-                }
-            }
-        )
-    }
+   
 }
-
 
 const styles = StyleSheet.create ({
     backView: {

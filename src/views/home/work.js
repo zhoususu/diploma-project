@@ -17,10 +17,20 @@ var Dimensions = require('Dimensions');
 //自定义组件
 import Common from '../../components/common'; //公共类
 import Header from '../../components/header'; //头部导航
+// import console = require('console');
+// import console = require('console');
 
 export default class WorkScreen extends Component {
     constructor(props){
         super(props);
+        this.state={
+            temperature_text:30,
+            intensity_text:5,
+            time_text: 30,
+        };
+        this.tem = 30;
+        this.intensity =5;
+        this.time = 30;
     }
 
     render() {
@@ -64,11 +74,25 @@ export default class WorkScreen extends Component {
                                     <Text style={[styles.boxDan]}>（℃）</Text>
                                 </Text>
                                 <View style={[styles.boxBack]}>
-                                    <TouchableOpacity style={[styles.boxJian]}>
+                                    <TouchableOpacity style={[styles.boxJian]}
+                                        onPress={() => {
+                                            if(this.tem > 0 && this.tem <= 50){
+                                                this.tem-=1;
+                                                this.state.temperature_text = this.tem;
+                                                this.setState({temperature_text:this.tem});
+                                            }
+                                        }}>
                                         <Image source={require('../../resources/images/tabs/jian.png')} style={[styles.boxImage]}/>
                                     </TouchableOpacity>
-                                    <Text style={[styles.boxContent]}>30</Text>
-                                    <TouchableOpacity style={[styles.Jia]}>
+                                    <Text style={[styles.boxContent]}>{this.state.temperature_text}</Text>
+                                    <TouchableOpacity style={[styles.Jia]} 
+                                        onPress={() => {
+                                            if(this.tem >= 0 && this.tem < 50){
+                                                this.tem+=1;
+                                                this.state.temperature_text = this.tem;
+                                                this.setState({temperature_text:this.tem});
+                                            }
+                                        }}>
                                         <Image source={require('../../resources/images/tabs/jia.png')} style={[styles.boxImage]}/>
                                     </TouchableOpacity>
                                 </View>
@@ -78,11 +102,27 @@ export default class WorkScreen extends Component {
                                     <Text style={[styles.boxDan]}>（级）</Text>
                                 </Text>
                                 <View style={[styles.boxBack]}>
-                                    <TouchableOpacity style={[styles.boxJian]}>
+                                    <TouchableOpacity style={[styles.boxJian]}
+                                        onPress={() => {
+                                            if(this.intensity > 0 && this.intensity <= 10){
+                                                this.intensity-=1;
+                                                this.state.intensity_text = this.intensity;
+                                                this.setState({intensity_text:this.intensity});
+                                            }
+                                        }}
+                                    >
                                         <Image source={require('../../resources/images/tabs/jian.png')} style={[styles.boxImage]}/>
                                     </TouchableOpacity>
-                                    <Text style={[styles.boxContent]}>5</Text>
-                                    <TouchableOpacity style={[styles.Jia]}>
+                                    <Text style={[styles.boxContent]}>{this.state.intensity_text}</Text>
+                                    <TouchableOpacity style={[styles.Jia]}
+                                        onPress={() => {
+                                            if(this.intensity >= 0 && this.intensity < 10){
+                                                this.intensity+=1;
+                                                this.state.intensity_text = this.intensity;
+                                                this.setState({intensity_text:this.intensity});
+                                            }
+                                        }}
+                                    >
                                         <Image source={require('../../resources/images/tabs/jia.png')} style={[styles.boxImage]}/>
                                     </TouchableOpacity>
                                 </View>
@@ -92,11 +132,27 @@ export default class WorkScreen extends Component {
                                     <Text style={[styles.boxDan]}>（min）</Text>
                                 </Text>
                                 <View style={[styles.boxBack]}>
-                                    <TouchableOpacity style={[styles.boxJian]}>
+                                    <TouchableOpacity style={[styles.boxJian]}
+                                        onPress={() => {
+                                            if(this.time > 0 && this.time <= 30){
+                                                this.time-=1;
+                                                this.state.time_text = this.time;
+                                                this.setState({time_text:this.time});
+                                            }
+                                        }}
+                                    >
                                         <Image source={require('../../resources/images/tabs/jian.png')} style={[styles.boxImage]}/>
                                     </TouchableOpacity>
-                                    <Text style={[styles.boxContent]}>30</Text>
-                                    <TouchableOpacity style={[styles.Jia]}>
+                                    <Text style={[styles.boxContent]}>{this.state.time_text}</Text>
+                                    <TouchableOpacity style={[styles.Jia]}
+                                        onPress={() => {
+                                            if(this.time >= 0 && this.time < 30){
+                                                this.time+=1;
+                                                this.state.time_text = this.time;
+                                                this.setState({time_text:this.time});
+                                            }
+                                        }}
+                                    >
                                         <Image source={require('../../resources/images/tabs/jia.png')} style={[styles.boxImage]}/>
                                     </TouchableOpacity>
                                 </View>
@@ -104,13 +160,24 @@ export default class WorkScreen extends Component {
                         </View>
                     </View>
                     <View style={[styles.size]}>
-                        <TouchableOpacity style={[styles.btn]} onPress={Actions.collect}>
+                        <TouchableOpacity style={[styles.btn]} onPress={() => {Actions.collect({username:this.props.username,usersign:this.props.usersign,
+                            intensity1:this.intensity,time1:this.time,temperature1:this.tem})}}>
                             <Text style={[styles.btnText]}>开始治疗</Text>
                         </TouchableOpacity>
                     </View>
-                </ScrollView>
+                </ScrollView> 
             </View>
         )
+    }
+
+    jia(max) {
+        if(this.state.temperature_text <= max){
+            this.state.temperature_text += 1;
+        }
+    }
+
+    jian() {
+
     }
 }
 const styles = StyleSheet.create({
@@ -178,6 +245,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginTop: 30,
         backgroundColor: '#0d6eff',
+        marginBottom:Dimensions.get('window').width*0.05,
     },
     btnText: {
         color: '#ffffff',

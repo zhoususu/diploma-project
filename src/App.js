@@ -30,6 +30,8 @@ import TopShowScreen from './views/home/topShow'; //登录
 import WorkScreen from './views/home/work'; //登录
 import collectScreen from './views/home/collect'; //登录
 import ForgetScreen from './views/signIns/forget';
+import Person from './views/home/person';
+import Mima from './views/home/mima';
 
 // const instructions = Platform.select({
 //   ios: 'Press Cmd+R to reload,\n' +
@@ -140,9 +142,11 @@ export default class App extends Component {
                         <Scene key="signIn" component={SignInScreen} title="登录" hideNavBar={true} />
                         <Scene key="forget" component={ForgetScreen} title="忘记密码" hideNavBar={true} />
                         {/*内容页*/}
-                        <Scene key="topShow" component={TopShowScreen} title="内容页" hideNavBar={true} />
-                        <Scene key="Work" component={WorkScreen} title="内容页1" hideNavBar={true} />
-                        <Scene key="collect" component={collectScreen} title="内容页2" hideNavBar={true} />
+                        <Scene key="topShow" component={TopShowScreen} title="病历详情" hideNavBar={true} />
+                        <Scene key="Work" component={WorkScreen} title="治疗设置" hideNavBar={true} />
+                        <Scene key="collect" component={collectScreen} title="数据采集" hideNavBar={true} />
+                        <Scene key="person" component={Person} title="个人资料" hideNavBar={true} />
+                        <Scene key="mima" component={Mima} title="账户安全" hideNavBar={true} />
                     </Scene>
                 </Router>
                 <Toast ref="toast" opacity={0.8}/>

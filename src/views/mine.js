@@ -5,7 +5,6 @@
 import React, { Component } from 'react';
 import {
     ScrollView,
-    TextInput,
     StyleSheet,
     View,
     Text,
@@ -17,15 +16,6 @@ var Dimensions = require('Dimensions');
 export default class MineTabScreen extends Component {
     constructor(props){
         super(props);
-        this.phoneNum="18382468693";
-        this.IDNum="";
-        this.school="";
-        this.job="";
-        this.year="";
-        this.hospital="";
-        this.room="";
-        this.adept="";
-        this.intro="";
     }
 
     render() {
@@ -40,51 +30,18 @@ export default class MineTabScreen extends Component {
                 </View>
                 {/* 第一行 */}
                 <ScrollView>
-                    <View style={styles.box}>
-                        <Text style={[styles.title]}>联系方式</Text>
-                        <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={false} onChangeText={(text) => {this.phoneNum=text}} defaultValue='18382468693'/>
-                    </View>
-                    <View style={styles.box}>
-                        <Text style={[styles.title]}>身份证号</Text>
-                        <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={false} onChangeText={(text) => {this.IDNum=text}} defaultValue='510421199805268321'/>
-                    </View>
-                    <View style={styles.box}>
-                        <Text style={[styles.title]}>毕业院校</Text>
-                        <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={false} onChangeText={(text) => {this.school=text}} defaultValue='成都中医药大学'/>
-                    </View>
-                    <View style={styles.box}>
-                        <Text style={[styles.title]}>职称</Text>
-                        <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={false} onChangeText={(text) => {this.job=text}} defaultValue='主治医师'/>
-                    </View>
-                    <View style={styles.box}>
-                        <Text style={[styles.title]}>从业年限</Text>
-                        <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={false} onChangeText={(text) => {this.year=text}} defaultValue='8年'/>
-                    </View>
-                    <View style={styles.box}>
-                        <Text style={[styles.title]}>坐诊医院</Text>
-                        <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={false} onChangeText={(text) => {this.hospital=text}} defaultValue='四川省中医院'/>
-                    </View>
-                    <View style={styles.box}>
-                        <Text style={[styles.title]}>所属科室</Text>
-                        <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={false} onChangeText={(text) => {this.room=text}} defaultValue='针灸科'/>
-                    </View>
-                    <View style={styles.box}>
-                        <Text style={[styles.title]}>擅长病种</Text>
-                        <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={false} onChangeText={(text) => {this.adept=text}} defaultValue='儿科'/>
-                    </View>
-                    <View style={styles.box}>
-                        <Text style={[styles.title]}>个人简介</Text>
-                        <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
-                        clearTextOnFocus={true} multiline={true} onChangeText={(text) => {this.intro=text}} defaultValue='从业至今，对儿科常见病、多发病及各类儿科疑难杂症有独特见解。擅长通过针灸、推拿、理疗等方式之劳坐骨神经痛、腰椎间盘突出等症状。'/>
-                    </View>
+                    <TouchableOpacity style={styles.box} onPress={Actions.person}>
+                        <Text style={[styles.title]}>个人资料</Text>
+                        <Image source={require('../resources/images/tabs/xiangzuo1.png')} style={[styles.zuo]}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.box} onPress={Actions.mima}>
+                        <Text style={[styles.title]}>账号安全</Text>
+                        <Image source={require('../resources/images/tabs/xiangzuo1.png')} style={[styles.zuo]}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.box}>
+                        <Text style={[styles.title]}>版本更新</Text>
+                        <Image source={require('../resources/images/tabs/xiangzuo1.png')} style={[styles.zuo]}/>
+                    </TouchableOpacity>
                 </ScrollView>
             </View>
         )
@@ -92,6 +49,10 @@ export default class MineTabScreen extends Component {
 }
 
 const styles = StyleSheet.create ({
+    zuo:{
+        width:Dimensions.get('window').width*0.04,
+        height:Dimensions.get('window').width*0.04,
+    },
     backView: {
         flexDirection: 'row',
         justifyContent: 'flex-start',
@@ -116,6 +77,8 @@ const styles = StyleSheet.create ({
         width: Dimensions.get('window').width,
         padding: 10,
         flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent:'space-between',
         borderBottomWidth: 1,
         borderBottomColor: '#f1f1f1',
     },
