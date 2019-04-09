@@ -137,6 +137,7 @@ const styles = StyleSheet.create({
     tabBoxIcon: {
         width: 22,
         height: 22,
+        resizeMode:'cover',
     },
     tabBoxName: {
         fontSize: 10,

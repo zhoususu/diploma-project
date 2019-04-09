@@ -19,7 +19,39 @@ export default class BoughtTabScreen extends Component {
         super(props);
     }
 
+    _flatList;
+
+    _renderItem = (item) => {
+        return (
+            <TouchableOpacity onPress={() => {Actions.topShow({username:item.item.key,usertime:item.item.time,usersign:item.item.sign})}}>
+                <View style={styles.box}>
+                    <Image source={item.item.image} style={[styles.image]}/>
+                    <View>
+                        <View style={styles.box1}>
+                            <Text style={styles.name}>{item.item.key}</Text>
+                            <Text style={styles.time}>{item.item.time}</Text>
+                        </View>
+                        <Text style={styles.symbol}>{item.item.sign}</Text>
+                    </View>
+                </View>
+            </TouchableOpacity>
+    )
+    };
+
     render() {
+        var data=[
+            {key: '仲曜瑞',image: require('../resources/images/src/man.png'),time: '2019-03-14 08:00',sign: '类风湿性关节炎'},
+            {key: '刘巧兰',image: require('../resources/images/src/man.png'),time: '2019-03-14 08:10',sign: '月经不调'},
+            {key: '王绍辉',image: require('../resources/images/src/man.png'),time: '2019-03-14 08:20',sign: '发烧、流感'},
+            {key: '刘天蓉',image: require('../resources/images/src/man.png'),time: '2019-03-14 09:07',sign: '慢性结肠炎'},
+            {key: '徐翰林',image: require('../resources/images/src/man.png'),time: '2019-03-14 09:58',sign: '急性肠胃炎'},
+            {key: '慕易',image: require('../resources/images/src/man.png'),time: '2019-03-14 10:10',sign: '腰椎间盘突出'},
+            {key: '张梓林',image: require('../resources/images/src/man.png'),time: '2019-03-14 12:05',sign: '面部神经麻痹'},
+            {key: '王若琴',image: require('../resources/images/src/man.png'),time: '2019-03-13 09:00',sign: '中风偏瘫'},
+            {key: '赵磊磊',image: require('../resources/images/src/man.png'),time: '2019-03-13 09:21',sign: '类风湿性关节炎'},
+            {key: '欧阳聆妍',image: require('../resources/images/src/man.png'),time: '2019-03-13 10:00',sign: '脑震荡后遗症'},
+            {key: '刘轩',image: require('../resources/images/src/man.png'),time: '2019-03-13 10:19',sign: '三叉神经痛'},
+        ]
         return (
             <View style={[global.styles.screen]}>
                 <View style={[styles.backView]}>
@@ -35,38 +67,10 @@ export default class BoughtTabScreen extends Component {
                 </View>
                 {/* 列表 */}
                 <FlatList
-                    data={[
-                        {key: '仲曜瑞',image: require('../resources/images/src/man.png'),time: '2019-03-14 08:00',sign: '类风湿性关节炎'},
-                        {key: '刘巧兰',image: require('../resources/images/src/man.png'),time: '2019-03-14 08:10',sign: '月经不调'},
-                        {key: '王绍辉',image: require('../resources/images/src/man.png'),time: '2019-03-14 08:20',sign: '发烧、流感'},
-                        {key: '刘天蓉',image: require('../resources/images/src/man.png'),time: '2019-03-14 09:07',sign: '慢性结肠炎'},
-                        {key: '徐翰林',image: require('../resources/images/src/man.png'),time: '2019-03-14 09:58',sign: '急性肠胃炎'},
-                        {key: '慕易',image: require('../resources/images/src/man.png'),time: '2019-03-14 10:10',sign: '腰椎间盘突出'},
-                        {key: '张梓林',image: require('../resources/images/src/man.png'),time: '2019-03-14 12:05',sign: '面部神经麻痹'},
-                        {key: '王若琴',image: require('../resources/images/src/man.png'),time: '2019-03-13 09:00',sign: '中风偏瘫'},
-                        {key: '赵磊磊',image: require('../resources/images/src/man.png'),time: '2019-03-13 09:21',sign: '类风湿性关节炎'},
-                        {key: '欧阳聆妍',image: require('../resources/images/src/man.png'),time: '2019-03-13 10:00',sign: '脑震荡后遗症'},
-                        {key: '刘轩',image: require('../resources/images/src/man.png'),time: '2019-03-13 10:19',sign: '三叉神经痛'},
-                        // {key: 'Joel'},
-                        // {key: 'John'},
-                        // {key: 'Jillian'},
-                        // {key: 'Jimmy'},
-                        // {key: 'Julie'},
-                    ]}
-                    renderItem={({item}) => 
-                        <TouchableOpacity onPress={() => {Actions.topShow({username:item.key,usertime:item.time,usersign:item.sign})}}>
-                            <View style={styles.box}>
-                                <Image source={item.image} style={[styles.image]}/>
-                                <View>
-                                    <View style={styles.box1}>
-                                        <Text style={styles.name}>{item.key}</Text>
-                                        <Text style={styles.time}>{item.time}</Text>
-                                    </View>
-                                    <Text style={styles.symbol}>{item.sign}</Text>
-                                </View>
-                            </View>
-                        </TouchableOpacity>
-                    }
+                    ref = {(flatList)=>this._flatList = flatList}
+                    // ItemSeparatorComponent={this._separator}
+                    renderItem={this._renderItem}
+                    data={data}
                 />
             </View>
         )

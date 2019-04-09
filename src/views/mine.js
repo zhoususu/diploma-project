@@ -95,7 +95,7 @@ const styles = StyleSheet.create ({
     out: {
         width:Dimensions.get('window').width*0.05,
         height:Dimensions.get('window').width*0.05,
-        resizeMode: 'cover',
+        resizeMode:'cover',
     },
     outBox: {
         position: 'absolute',

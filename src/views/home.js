@@ -89,6 +89,7 @@ export default class HomeTabScreen extends Component {
                     </View>
                     <View style={styles.box}>
                         <Text style={[styles.title]}>性别</Text>
+                        {/* <ModalDropdown options={['男', '女']} style={[styles.write]} /> */}
                         <TextInput style={[styles.write]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
                         clearTextOnFocus={true} multiline={false} onChangeText={(text) => {this.sex=text}}/>
                     </View>
@@ -118,7 +119,7 @@ export default class HomeTabScreen extends Component {
                                 style={[styles.searchStyle]} underlineColorAndroid='transparent' clearButtonMode='while-editing'
                                 clearTextOnFocus={true} onChangeText={(text) => {this.check(text)}}
                             />
-                            <ModalDropdown options={['option 1', 'option 2']}/>
+                            {/* <ModalDropdown options={['option 1', 'option 2']}/> */}
                         </View>
                     </View>
                     <View style={styles.box1}>
@@ -219,6 +220,7 @@ const styles = StyleSheet.create ({
         width: Dimensions.get('window').width,
         padding: 10,
         flexDirection: 'row',
+        alignItems: 'center',
         borderBottomWidth: 1,
         borderBottomColor: '#f1f1f1',
     },
